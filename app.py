@@ -5,7 +5,7 @@ import dash_bootstrap_components as dbc
 import pymongo
 from dash import Input, Output, State
 
-client = pymongo.MongoClient('')
+client = pymongo.MongoClient('mongodb+srv://EgpQLbxVVQvaK899:EgpQLbxVVQvaK899@cluster0.ftsc0.mongodb.net/?retryWrites=true&w=majority')
 db = client['avaliacaoaplicada']
 collection = db['autoavaliacao']
 collection.create_index('nome', unique=True)
