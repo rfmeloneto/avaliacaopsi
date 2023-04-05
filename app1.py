@@ -8,7 +8,7 @@ from datetime import datetime
 import os
 import requests
 
-client = pymongo.MongoClient()
+client = pymongo.MongoClient('mongodb+srv://EgpQLbxVVQvaK899:EgpQLbxVVQvaK899@cluster0.ftsc0.mongodb.net/?retryWrites=true&w=majority')
 db = client['avaliacaoaplicada']
 collection = db['autoavaliacao']
 collection.create_index('nome', unique=True)
@@ -19,30 +19,37 @@ if response.status_code == 200:
     data = response.json()
     municipio = [ i['nome'] for i in data]
 
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SPACELAB])
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.QUARTZ])
 
-app.layout = dbc.Container([
+app.layout = html.Div([
+    
+dbc.Container([
     dbc.Row([
+        
         html.Label('Nome'),
-        dcc.Input(id='input-nome', type='text'),
+        dbc.Input(id='input-nome', type='text'),
 
         html.Label('Cargo'),
-        dcc.Input(id='input-cargo', type='text'),
+        dbc.Input(id='input-cargo', type='text'),
 
         html.Label('Cidade'),
-        dcc.Dropdown(municipio, id='input-cidade', placeholder=''),
+        dcc.Dropdown(municipio, id='input-cidade', className='text-black' , placeholder='Selecione a cidade', style={'backgroundColor': 'rgba(255, 255, 255, 0)'}),
 
         html.Label('Instituição'),
-        dcc.Input(id='input-instituicao', type='text'),
+        dbc.Input(id='input-instituicao', type='text'),
     ]),
 
     html.Hr(),
+    
+    dbc.Row([
+        html.H3('Escolha uma palavra em cada grupo de palavras, que melhor define você' , className='text-center mb-3'),
+    ]),
 
     dbc.Row([
-        html.H3('Escolha uma palavra em cada grupo de palavras, que melhor define você'),
-        
-        html.Div([html.Label('1. Grupo de Palavras')],className='text-center mb-3'),
-        dbc.Card([
+    
+        dbc.Col([
+            html.Div([html.Label('1. Grupo de Palavras')],className='text-center mb-3'),
+            dbc.Card([
             dcc.RadioItems(
                 id='q1',
                 options=[
@@ -52,11 +59,9 @@ app.layout = dbc.Container([
                     {'label': 'Emotivo', 'value': 'Influenciador'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px',},
-            )], className='mb-3 w-100 bg-secondary text-white'),
+            )], className='mb-3 w-100  text-white shadow-lg'),
 
-        # html.Br(),
-
-       html.Div([html.Label('2. Grupo de Palavras')],className='text-center mb-3'),
+            html.Div([html.Label('2. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q2',
@@ -67,11 +72,9 @@ app.layout = dbc.Container([
                     {'label': 'Autoconfiante', 'value': 'Dominador'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            )], className='mb-3 w-100 bg-primary text-white'),
+            )], className='mb-3 w-100 text-white shadow-lg'),
 
-        # html.Br(),
-
-        html.Div([html.Label('3. Grupo de Palavras')],className='text-center mb-3'),
+            html.Div([html.Label('3. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q3',
@@ -82,11 +85,9 @@ app.layout = dbc.Container([
                     {'label': 'Sistemático', 'value': 'Analítico'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            )], className='mb-3 w-100 bg-info text-white'),
+            )], className='mb-3 w-100 bg-info text-white shadow-lg'),
 
-        html.Br(),
-
-        html.Div([html.Label('4. Grupo de Palavras')],className='text-center mb-3'),
+             html.Div([html.Label('4. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q4',
@@ -97,11 +98,9 @@ app.layout = dbc.Container([
                     {'label': 'Metódico', 'value': 'Analítico'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            )], className='mb-3 w-100 bg-warning text-white'),
+            )], className='mb-3 w-100 bg-warning text-white shadow-lg'),
 
-        html.Br(),
-
-        html.Div([html.Label('5. Grupo de Palavras')],className='text-center mb-3'),
+              html.Div([html.Label('5. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q5',
@@ -112,11 +111,9 @@ app.layout = dbc.Container([
                     {'label': 'Servidor', 'value': 'Analítico'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            )], className='mb-3 w-100 bg-success text-white'),
+            )], className='mb-3 w-100 bg-success text-white shadow-lg'),
 
-        html.Br(),
-
-        html.Div([html.Label('6. Grupo de Palavras')],className='text-center mb-3'),
+             html.Div([html.Label('6. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q6',
@@ -127,11 +124,9 @@ app.layout = dbc.Container([
                     {'label': 'Autosufificiente', 'value': 'Dominador'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-danger text-white'),
+            ), ], className='mb-3 w-100 bg-danger text-white shadow-lg'),
 
-        html.Br(),
-
-        html.Div([html.Label('7. Grupo de Palavras')],className='text-center mb-3'),
+             html.Div([html.Label('7. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q7',
@@ -142,11 +137,9 @@ app.layout = dbc.Container([
                     {'label': 'Espontâneo', 'value': 'Influenciador'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-secondary text-white'),
+            ), ], className='mb-3 w-100 bg-warning text-white shadow-lg'),
 
-        html.Br(),
-
-        html.Div([html.Label('8. Grupo de Palavras')],className='text-center mb-3'),
+             html.Div([html.Label('8. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q8',
@@ -157,11 +150,9 @@ app.layout = dbc.Container([
                     {'label': 'Sarcástico', 'value': 'Dominador'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-primary text-white'),
+            ), ], className='mb-3 w-100 bg-primary text-white shadow-lg'),
 
-        html.Br(),
-
-        html.Div([html.Label('9. Grupo de Palavras')],className='text-center mb-3'),
+                    html.Div([html.Label('9. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q9',
@@ -172,11 +163,9 @@ app.layout = dbc.Container([
                     {'label': 'Destemido', 'value': 'Dominador'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-info text-white'),
+            ), ], className='mb-3 w-100 bg-info text-white shadow-lg'),
 
-        html.Br(),
-
-        html.Div([html.Label('10. Grupo de Palavras')],className='text-center mb-3'),
+            html.Div([html.Label('10. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q10',
@@ -187,11 +176,13 @@ app.layout = dbc.Container([
                     {'label': 'Lógico', 'value': 'Analítico'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-warning text-white'),
+            ), ], className='mb-3 w-100 bg-warning text-white shadow-lg'),
 
-        html.Br(),
+        ], sm=12, md=6, lg=4, xl=3),
 
-        html.Div([html.Label('11. Grupo de Palavras')],className='text-center mb-3'),
+        dbc.Col([
+
+            html.Div([html.Label('11. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q11',
@@ -202,10 +193,9 @@ app.layout = dbc.Container([
                     {'label': 'Calmo', 'value': 'Estável'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-success text-white'),
+            ), ], className='mb-3 w-100 bg-success text-white shadow-lg'),
 
-        html.Br(),
-
+            
         html.Div([html.Label('12. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
@@ -217,11 +207,9 @@ app.layout = dbc.Container([
                     {'label': 'Inseguro', 'value': 'Analítico'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-danger text-white'),
+            ), ], className='mb-3 w-100 bg-danger text-white shadow-lg'),
 
-        html.Br(),
-
-        html.Div([html.Label('13. Grupo de Palavras')],className='text-center mb-3'),
+            html.Div([html.Label('13. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q13',
@@ -232,9 +220,7 @@ app.layout = dbc.Container([
                     {'label': 'Desorganizado', 'value': 'Influenciador'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-primary text-white'),
-
-        html.Br(),
+            ), ], className='mb-3 w-100 bg-primary text-white shadow-lg'),
 
         html.Div([html.Label('14. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
@@ -247,9 +233,7 @@ app.layout = dbc.Container([
                     {'label': 'Desorganizado', 'value': 'Influenciador'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-secondary text-white'),
-
-        html.Br(),
+            ), ], className='mb-3 w-100 bg-warning text-white shadow-lg'),
 
         html.Div([html.Label('15. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
@@ -262,11 +246,9 @@ app.layout = dbc.Container([
                     {'label': 'Reprimido', 'value': 'Estável'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-info text-white'),
+            ), ], className='mb-3 w-100 bg-info text-white shadow-lg'),
 
-        html.Br(),
-
-       html.Div([html.Label('16. Grupo de Palavras')],className='text-center mb-3'),
+             html.Div([html.Label('16. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q16',
@@ -277,11 +259,9 @@ app.layout = dbc.Container([
                     {'label': 'Cético', 'value': 'Analítico'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-warning text-white'),
+            ), ], className='mb-3 w-100 bg-warning text-white shadow-lg'),
 
-        html.Br(),
-
-        html.Div([html.Label('17. Grupo de Palavras')],className='text-center mb-3'),
+             html.Div([html.Label('17. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q17',
@@ -292,11 +272,9 @@ app.layout = dbc.Container([
                     {'label': 'Exigente', 'value': 'Analítico'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-success text-white'),
+            ), ], className='mb-3 w-100 bg-success text-white shadow-lg'),
 
-        html.Br(),
-
-        html.Div([html.Label('18. Grupo de Palavras')],className='text-center mb-3'),
+            html.Div([html.Label('18. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q18',
@@ -307,11 +285,9 @@ app.layout = dbc.Container([
                     {'label': 'Introvertido', 'value': 'Analítico'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-primary text-white'),
+            ), ], className='mb-3 w-100 bg-primary text-white shadow-lg'),
 
-        html.Br(),
-
-       html.Div([html.Label('19. Grupo de Palavras')],className='text-center mb-3'),
+            html.Div([html.Label('19. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q19',
@@ -322,11 +298,9 @@ app.layout = dbc.Container([
                     {'label': 'Competitivo', 'value': 'Dominador'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-secondary text-white'),
+            ), ], className='mb-3 w-100 bg-warning text-white shadow-lg'),
 
-        html.Br(),
-
-        html.Div([html.Label('20. Grupo de Palavras')],className='text-center mb-3'),
+            html.Div([html.Label('20. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q20',
@@ -337,11 +311,12 @@ app.layout = dbc.Container([
                     {'label': 'Desordenado', 'value': 'Influenciador'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-info text-white'),
+            ), ], className='mb-3 w-100 bg-info text-white shadow-lg'),
 
-        html.Br(),
+        ], sm=12, md=6, lg=4, xl=3),
+        dbc.Col([
 
-        html.Div([html.Label('21. Grupo de Palavras')],className='text-center mb-3'),
+            html.Div([html.Label('21. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q21',
@@ -352,11 +327,9 @@ app.layout = dbc.Container([
                     {'label': 'Autodisciplinado', 'value': 'Analítico'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-warning text-white'),
-
-        html.Br(),
-
-        html.Div([html.Label('22. Grupo de Palavras')],className='text-center mb-3'),
+            ), ], className='mb-3 w-100 bg-warning text-white shadow-lg'),
+            
+            html.Div([html.Label('22. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q22',
@@ -367,11 +340,9 @@ app.layout = dbc.Container([
                     {'label': 'Disciplinado', 'value': 'Analítico'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-success text-white'),
+            ), ], className='mb-3 w-100 bg-success text-white shadow-lg'),
 
-        html.Br(),
-
-        html.Div([html.Label('23. Grupo de Palavras')],className='text-center mb-3'),
+             html.Div([html.Label('23. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q23',
@@ -382,11 +353,9 @@ app.layout = dbc.Container([
                     {'label': 'Centralizador', 'value': 'Analítico'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-danger text-white'),
+            ), ], className='mb-3 w-100 bg-danger text-white shadow-lg'),
 
-        html.Br(),
-
-        html.Div([html.Label('24. Grupo de Palavras')],className='text-center mb-3'),
+            html.Div([html.Label('24. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q24',
@@ -397,11 +366,9 @@ app.layout = dbc.Container([
                     {'label': 'Cauteloso', 'value': 'Analítico'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-primary text-white'),
+            ), ], className='mb-3 w-100 bg-primary text-white shadow-lg'),
 
-        html.Br(),
-
-       html.Div([html.Label('25. Grupo de Palavras')],className='text-center mb-3'),
+            html.Div([html.Label('25. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q25',
@@ -412,11 +379,9 @@ app.layout = dbc.Container([
                     {'label': 'Acelerado', 'value': 'Dominador'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-secondary text-white'),
+            ), ], className='mb-3 w-100 bg-warning text-white shadow-lg'),
 
-        html.Br(),
-
-        html.Div([html.Label('26. Grupo de Palavras')],className='text-center mb-3'),
+            html.Div([html.Label('26. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q26',
@@ -427,11 +392,10 @@ app.layout = dbc.Container([
                     {'label': 'Acomodado', 'value': 'Estável'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-info text-white'),
+            ), ], className='mb-3 w-100 bg-info text-white shadow-lg'),
 
-        html.Br(),
+            html.Div([html.Label('27. Grupo de Palavras')],className='text-center mb-3'),
 
-        html.Div([html.Label('27. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q27',
@@ -442,11 +406,9 @@ app.layout = dbc.Container([
                     {'label': 'Discreto', 'value': 'Analítico'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-success text-white'),
+            ), ], className='mb-3 w-100 bg-success text-white shadow-lg'),
 
-        html.Br(),
-
-        html.Div([html.Label('28. Grupo de Palavras')],className='text-center mb-3'),
+            html.Div([html.Label('28. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q28',
@@ -457,11 +419,9 @@ app.layout = dbc.Container([
                     {'label': 'Controlador', 'value': 'Analítico'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-warning text-white'),
+            ), ], className='mb-3 w-100 bg-warning text-white shadow-lg'),
 
-        html.Br(),
-
-        html.Div([html.Label('29. Grupo de Palavras')],className='text-center mb-3'),
+            html.Div([html.Label('29. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
             dcc.RadioItems(
                 id='q29',
@@ -472,19 +432,19 @@ app.layout = dbc.Container([
                     {'label': 'Ousado', 'value': 'Dominador'},
 
                 ],labelStyle={'display': 'block', 'margin-bottom': '10px'}
-            ), ], className='mb-3 w-100 bg-info text-white'),
+            ), ], className='mb-3 w-100 bg-info text-white shadow-lg'),
 
-        html.Br(),
-
+        ],sm=12, md=6, lg=4, xl=3)
     ], className='d-flex justify-content-center'),
+
+
+    ]),
 
 html.Div(id='status'),
 
 html.Div([dbc.Button('Enviar', id='enviar', className='m-3', size='lg')], className='d-flex justify-content-center'),
 
-
-
-], )
+])
 
 
 @app.callback(

@@ -7,7 +7,7 @@ from dash import Input, Output, State
 import dash_table
 import time
 
-client = pymongo.MongoClient()
+client = pymongo.MongoClient('mongodb+srv://EgpQLbxVVQvaK899:EgpQLbxVVQvaK899@cluster0.ftsc0.mongodb.net/?retryWrites=true&w=majority')
 db = client['avaliacaoaplicada']
 nomecol = db['autoavaliacao']
 collection = db['grupo']
@@ -89,7 +89,3 @@ def save_data(n_clicks, data):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
-
-
-
-
