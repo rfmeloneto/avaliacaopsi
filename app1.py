@@ -8,7 +8,7 @@ from datetime import datetime
 import os
 import requests
 
-client = pymongo.MongoClient('mongodb+srv://EgpQLbxVVQvaK899:EgpQLbxVVQvaK899@cluster0.ftsc0.mongodb.net/?retryWrites=true&w=majority')
+client = pymongo.MongoClient('')
 db = client['avaliacaoaplicada']
 collection = db['autoavaliacao']
 collection.create_index('nome', unique=True)
@@ -82,8 +82,10 @@ dbc.Container([
           ], className='mb-3 w-100 bg-primary text-white shadow-lg text-center fw-bold'),
 
             html.Div([html.Label('3. Grupo de Palavras')],className='text-center mb-3'),
+
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q3',
                 options=[
                     {'label': 'Brincalhão', 'value': 'Influenciador'},
@@ -91,12 +93,16 @@ dbc.Container([
                     {'label': 'Paciente', 'value': 'Estável'},
                     {'label': 'Sistemático', 'value': 'Analítico'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            )], className='mb-3 w-100 bg-info text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            )
+            ], style={'display':'flex','justify-content': 'center'}),
+            ], className='mb-3 w-100 bg-info text-white shadow-lg text-center fw-bold'),
 
              html.Div([html.Label('4. Grupo de Palavras')],className='text-center mb-3'),
+
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q4',
                 options=[
                     {'label': 'Tranquilo', 'value': 'Estável'},
@@ -104,12 +110,15 @@ dbc.Container([
                     {'label': 'Energético', 'value': 'Dominador'},
                     {'label': 'Metódico', 'value': 'Analítico'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            )], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            )
+            ], style={'display':'flex','justify-content': 'center'}),
+            ], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold'),
 
               html.Div([html.Label('5. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q5',
                 options=[
                     {'label': 'Independente', 'value': 'Dominador'},
@@ -117,12 +126,16 @@ dbc.Container([
                     {'label': 'Amigável', 'value': 'Estável'},
                     {'label': 'Servidor', 'value': 'Analítico'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            )], className='mb-3 w-100 bg-success text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+            ], className='mb-3 w-100 bg-success text-white shadow-lg text-center fw-bold'),
 
              html.Div([html.Label('6. Grupo de Palavras')],className='text-center mb-3'),
+
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q6',
                 options=[
                     {'label': 'Exato', 'value': 'Analítico'},
@@ -130,12 +143,15 @@ dbc.Container([
                     {'label': 'Satisfeito', 'value': 'Estável'},
                     {'label': 'Autosufificiente', 'value': 'Dominador'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-danger text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            )
+            ], style={'display':'flex','justify-content': 'center'}),
+             ], className='mb-3 w-100 bg-danger text-white shadow-lg text-center fw-bold'),
 
              html.Div([html.Label('7. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q7',
                 options=[
                     {'label': 'Organizado', 'value': 'Analítico'},
@@ -143,12 +159,15 @@ dbc.Container([
                     {'label': 'Tímido', 'value': 'Estável'},
                     {'label': 'Espontâneo', 'value': 'Influenciador'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+             ], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold'),
 
              html.Div([html.Label('8. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q8',
                 options=[
                     {'label': 'Previsível', 'value': 'Estável'},
@@ -156,12 +175,16 @@ dbc.Container([
                     {'label': 'Tagarela', 'value': 'Influenciador'},
                     {'label': 'Sarcástico', 'value': 'Dominador'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-primary text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+             ], className='mb-3 w-100 bg-primary text-white shadow-lg text-center fw-bold'),
 
                     html.Div([html.Label('9. Grupo de Palavras')],className='text-center mb-3'),
+
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q9',
                 options=[
                     {'label': 'Preciso', 'value': 'Analítico'},
@@ -169,12 +192,16 @@ dbc.Container([
                     {'label': 'Acolhedor', 'value': 'Estável'},
                     {'label': 'Destemido', 'value': 'Dominador'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-info text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+             ], className='mb-3 w-100 bg-info text-white shadow-lg text-center fw-bold'),
 
             html.Div([html.Label('10. Grupo de Palavras')],className='text-center mb-3'),
+
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                 dbc.RadioItems(
                 id='q10',
                 options=[
                     {'label': 'Impaciente', 'value': 'Dominador'},
@@ -182,8 +209,10 @@ dbc.Container([
                     {'label': 'Generoso', 'value': 'Estável'},
                     {'label': 'Lógico', 'value': 'Analítico'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+            ], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold'),
 
         ], sm=12, md=6, lg=4, xl=3),
 
@@ -191,7 +220,8 @@ dbc.Container([
 
             html.Div([html.Label('11. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q11',
                 options=[
                     {'label': 'Franco', 'value': 'Dominador'},
@@ -199,13 +229,16 @@ dbc.Container([
                     {'label': 'Otimista', 'value': 'Influenciador'},
                     {'label': 'Calmo', 'value': 'Estável'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100  text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+             ], className='mb-3 w-100  text-white shadow-lg text-center fw-bold'),
 
             
         html.Div([html.Label('12. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q12',
                 options=[
                     {'label': 'Procrastinador', 'value': 'Estável'},
@@ -213,12 +246,15 @@ dbc.Container([
                     {'label': 'Impaciente', 'value': 'Dominador'},
                     {'label': 'Inseguro', 'value': 'Analítico'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-danger text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+             ], className='mb-3 w-100 text-white shadow-lg text-center fw-bold'),
 
             html.Div([html.Label('13. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q13',
                 options=[
                     {'label': 'Incerto', 'value': 'Estável'},
@@ -226,12 +262,15 @@ dbc.Container([
                     {'label': 'Discutidor', 'value': 'Dominador'},
                     {'label': 'Desorganizado', 'value': 'Influenciador'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-primary text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+             ], className='mb-3 w-100 text-white shadow-lg text-center fw-bold'),
 
         html.Div([html.Label('14. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q14',
                 options=[
                     {'label': 'Perseverante', 'value': 'Estável'},
@@ -239,12 +278,16 @@ dbc.Container([
                     {'label': 'Pessimista', 'value': 'Analítico'},
                     {'label': 'Desorganizado', 'value': 'Influenciador'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+             ], className='mb-3 w-100  text-white shadow-lg text-center fw-bold'),
 
         html.Div([html.Label('15. Grupo de Palavras')],className='text-center mb-3'),
+
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q15',
                 options=[
                     {'label': 'Indisciplinado', 'value': 'Influenciador'},
@@ -252,12 +295,17 @@ dbc.Container([
                     {'label': 'Insesível', 'value': 'Analítico'},
                     {'label': 'Reprimido', 'value': 'Estável'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-info text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+             ], className='mb-3 w-100 bg-info text-white shadow-lg text-center fw-bold'),
 
              html.Div([html.Label('16. Grupo de Palavras')],className='text-center mb-3'),
+
         dbc.Card([
-            dbc.RadioItems(
+            
+            dbc.Container([
+                dbc.RadioItems(
                 id='q16',
                 options=[
                     {'label': 'Lento', 'value': 'Estável'},
@@ -265,12 +313,16 @@ dbc.Container([
                     {'label': 'Desobediente', 'value': 'Influenciador'},
                     {'label': 'Cético', 'value': 'Analítico'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+             ], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold'),
 
              html.Div([html.Label('17. Grupo de Palavras')],className='text-center mb-3'),
+
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q17',
                 options=[
                     {'label': 'Tranquilo', 'value': 'Estável'},
@@ -278,12 +330,15 @@ dbc.Container([
                     {'label': 'Entusiasmado', 'value': 'Influenciador'},
                     {'label': 'Exigente', 'value': 'Analítico'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-success text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+             ], className='mb-3 w-100 bg-success text-white shadow-lg text-center fw-bold'),
 
             html.Div([html.Label('18. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q18',
                 options=[
                     {'label': 'Paciente', 'value': 'Estável'},
@@ -291,12 +346,15 @@ dbc.Container([
                     {'label': 'Intolerante', 'value': 'Dominador'},
                     {'label': 'Introvertido', 'value': 'Analítico'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-primary text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+             ], className='mb-3 w-100 bg-primary text-white shadow-lg text-center fw-bold'),
 
             html.Div([html.Label('19. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
-            dbc.RadioItems(
+            dcc.Container([
+                dbc.RadioItems(
                 id='q19',
                 options=[
                     {'label': 'Pessimista', 'value': 'Analítico'},
@@ -304,12 +362,15 @@ dbc.Container([
                     {'label': 'Reservado', 'value': 'Estável'},
                     {'label': 'Competitivo', 'value': 'Dominador'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+             ], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold'),
 
             html.Div([html.Label('20. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q20',
                 options=[
                     {'label': 'Complacente', 'value': 'Estável'},
@@ -317,15 +378,19 @@ dbc.Container([
                     {'label': 'Resmungão', 'value': 'Analítico'},
                     {'label': 'Desordenado', 'value': 'Influenciador'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-info text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+             ], className='mb-3 w-100 bg-info text-white shadow-lg text-center fw-bold'),
 
         ], sm=12, md=6, lg=4, xl=3),
         dbc.Col([
 
             html.Div([html.Label('21. Grupo de Palavras')],className='text-center mb-3'),
+
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                 dbc.RadioItems(
                 id='q21',
                 options=[
                     {'label': 'Brincalhão', 'value': 'Influenciador'},
@@ -333,12 +398,15 @@ dbc.Container([
                     {'label': 'Enérgico', 'value': 'Dominador'},
                     {'label': 'Autodisciplinado', 'value': 'Analítico'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100  text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+            ], className='mb-3 w-100  text-white shadow-lg text-center fw-bold'),
             
             html.Div([html.Label('22. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q22',
                 options=[
                     {'label': 'Vingativo', 'value': 'Dominador'},
@@ -346,12 +414,16 @@ dbc.Container([
                     {'label': 'Amigável', 'value': 'Estável'},
                     {'label': 'Disciplinado', 'value': 'Analítico'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-success text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+             ], className='mb-3 w-100 bg-success text-white shadow-lg text-center fw-bold'),
 
              html.Div([html.Label('23. Grupo de Palavras')],className='text-center mb-3'),
+
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q23',
                 options=[
                     {'label': 'Exigente', 'value': 'Dominador'},
@@ -359,12 +431,15 @@ dbc.Container([
                     {'label': 'Superficial', 'value': 'Influenciador'},
                     {'label': 'Centralizador', 'value': 'Analítico'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-danger text-white shadow-lg text-center fw-bold '),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+             ], className='mb-3 w-100 bg-danger text-white shadow-lg text-center fw-bold '),
 
             html.Div([html.Label('24. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q24',
                 options=[
                     {'label': 'Orgulhoso', 'value': 'Dominador'},
@@ -372,12 +447,15 @@ dbc.Container([
                     {'label': 'Conformado', 'value': 'Estável'},
                     {'label': 'Cauteloso', 'value': 'Analítico'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-primary text-white shadow-lg text-center fw-bold '),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+             ], className='mb-3 w-100 bg-primary text-white shadow-lg text-center fw-bold '),
 
             html.Div([html.Label('25. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q25',
                 options=[
                     {'label': 'Cauteloso', 'value': 'Analítico'},
@@ -385,12 +463,15 @@ dbc.Container([
                     {'label': 'Precipitado', 'value': 'Influenciador'},
                     {'label': 'Acelerado', 'value': 'Dominador'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold '),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+             ], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold '),
 
             html.Div([html.Label('26. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q26',
                 options=[
                     {'label': 'Teimoso', 'value': 'Dominador'},
@@ -398,13 +479,16 @@ dbc.Container([
                     {'label': 'Minucioso', 'value': 'Analítico'},
                     {'label': 'Acomodado', 'value': 'Estável'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-info text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+           ], className='mb-3 w-100 bg-info text-white shadow-lg text-center fw-bold'),
 
             html.Div([html.Label('27. Grupo de Palavras')],className='text-center mb-3'),
 
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q27',
                 options=[
                     {'label': 'Ambicioso', 'value': 'Dominador'},
@@ -412,12 +496,15 @@ dbc.Container([
                     {'label': 'Comunicativo', 'value': 'Influenciador'},
                     {'label': 'Discreto', 'value': 'Analítico'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-success text-white shadow-lg text-center fw-bold '),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'}),
+             ], className='mb-3 w-100 bg-success text-white shadow-lg text-center fw-bold '),
 
             html.Div([html.Label('28. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q28',
                 options=[
                     {'label': 'Complacente', 'value': 'Estável'},
@@ -425,12 +512,15 @@ dbc.Container([
                     {'label': 'Impulsivo', 'value': 'Influenciador'},
                     {'label': 'Controlador', 'value': 'Analítico'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold'),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'})
+             ], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold'),
 
             html.Div([html.Label('29. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
-            dbc.RadioItems(
+            dbc.Container([
+                dbc.RadioItems(
                 id='q29',
                 options=[
                     {'label': 'Submisso', 'value': 'Estável'},
@@ -438,8 +528,10 @@ dbc.Container([
                     {'label': 'Ingênuo', 'value': 'Influenciador'},
                     {'label': 'Ousado', 'value': 'Dominador'},
 
-                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'center'}
-            ), ], className='mb-3 w-100 bg-info text-white shadow-lg text-center fw-bold '),
+                ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
+            ),
+            ], style={'display':'flex','justify-content': 'center'})
+             ], className='mb-3 w-100 bg-info text-white shadow-lg text-center fw-bold '),
 
         ],sm=12, md=6, lg=4, xl=3)
     ], className='d-flex justify-content-center'),
