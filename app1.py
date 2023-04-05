@@ -63,7 +63,7 @@ dbc.Container([
                 ], label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
                 ], style={'display':'flex','justify-content': 'center'}),
-           ], className='mb-3 w-100  text-white shadow-lg fw-bold fw-bold '),
+           ], className='mb-3 w-100 card-zoom text-white shadow-lg fw-bold fw-bold '),
 
             html.Div([html.Label('2. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
@@ -79,7 +79,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             )
             ], style={'display':'flex','justify-content': 'center'}),
-          ], className='mb-3 w-100 bg-primary text-white shadow-lg text-center fw-bold'),
+          ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold'),
 
             html.Div([html.Label('3. Grupo de Palavras')],className='text-center mb-3'),
 
@@ -96,7 +96,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             )
             ], style={'display':'flex','justify-content': 'center'}),
-            ], className='mb-3 w-100 bg-info text-white shadow-lg text-center fw-bold'),
+            ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold'),
 
              html.Div([html.Label('4. Grupo de Palavras')],className='text-center mb-3'),
 
@@ -113,7 +113,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             )
             ], style={'display':'flex','justify-content': 'center'}),
-            ], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold'),
+            ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold'),
 
               html.Div([html.Label('5. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
@@ -129,7 +129,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-            ], className='mb-3 w-100 bg-success text-white shadow-lg text-center fw-bold'),
+            ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold'),
 
              html.Div([html.Label('6. Grupo de Palavras')],className='text-center mb-3'),
 
@@ -146,7 +146,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             )
             ], style={'display':'flex','justify-content': 'center'}),
-             ], className='mb-3 w-100 bg-danger text-white shadow-lg text-center fw-bold'),
+             ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold'),
 
              html.Div([html.Label('7. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
@@ -162,7 +162,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-             ], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold'),
+             ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold'),
 
              html.Div([html.Label('8. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
@@ -178,7 +178,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-             ], className='mb-3 w-100 bg-primary text-white shadow-lg text-center fw-bold'),
+             ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold'),
 
                     html.Div([html.Label('9. Grupo de Palavras')],className='text-center mb-3'),
 
@@ -195,7 +195,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-             ], className='mb-3 w-100 bg-info text-white shadow-lg text-center fw-bold'),
+             ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold'),
 
             html.Div([html.Label('10. Grupo de Palavras')],className='text-center mb-3'),
 
@@ -212,7 +212,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-            ], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold'),
+            ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold'),
 
         ], sm=12, md=6, lg=4, xl=3),
 
@@ -232,7 +232,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-             ], className='mb-3 w-100  text-white shadow-lg text-center fw-bold'),
+             ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold'),
 
             
         html.Div([html.Label('12. Grupo de Palavras')],className='text-center mb-3'),
@@ -249,7 +249,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-             ], className='mb-3 w-100 text-white shadow-lg text-center fw-bold'),
+             ], className='mb-3 w-100 card-zoom text-white shadow-lg text-center fw-bold'),
 
             html.Div([html.Label('13. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
@@ -265,7 +265,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-             ], className='mb-3 w-100 text-white shadow-lg text-center fw-bold'),
+             ], className='mb-3 w-100 card-zoom text-white shadow-lg text-center fw-bold'),
 
         html.Div([html.Label('14. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
@@ -281,7 +281,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-             ], className='mb-3 w-100  text-white shadow-lg text-center fw-bold'),
+             ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold'),
 
         html.Div([html.Label('15. Grupo de Palavras')],className='text-center mb-3'),
 
@@ -298,7 +298,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-             ], className='mb-3 w-100 bg-info text-white shadow-lg text-center fw-bold'),
+             ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold'),
 
              html.Div([html.Label('16. Grupo de Palavras')],className='text-center mb-3'),
 
@@ -316,7 +316,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-             ], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold'),
+             ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold'),
 
              html.Div([html.Label('17. Grupo de Palavras')],className='text-center mb-3'),
 
@@ -333,7 +333,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-             ], className='mb-3 w-100 bg-success text-white shadow-lg text-center fw-bold'),
+             ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold'),
 
             html.Div([html.Label('18. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
@@ -349,11 +349,11 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-             ], className='mb-3 w-100 bg-primary text-white shadow-lg text-center fw-bold'),
+             ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold'),
 
             html.Div([html.Label('19. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
-            dcc.Container([
+            dbc.Container([
                 dbc.RadioItems(
                 id='q19',
                 options=[
@@ -365,7 +365,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-             ], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold'),
+             ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold'),
 
             html.Div([html.Label('20. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
@@ -381,7 +381,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-             ], className='mb-3 w-100 bg-info text-white shadow-lg text-center fw-bold'),
+             ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold'),
 
         ], sm=12, md=6, lg=4, xl=3),
         dbc.Col([
@@ -401,7 +401,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-            ], className='mb-3 w-100  text-white shadow-lg text-center fw-bold'),
+            ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold'),
             
             html.Div([html.Label('22. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
@@ -417,7 +417,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-             ], className='mb-3 w-100 bg-success text-white shadow-lg text-center fw-bold'),
+             ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold'),
 
              html.Div([html.Label('23. Grupo de Palavras')],className='text-center mb-3'),
 
@@ -434,7 +434,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-             ], className='mb-3 w-100 bg-danger text-white shadow-lg text-center fw-bold '),
+             ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold '),
 
             html.Div([html.Label('24. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
@@ -450,7 +450,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-             ], className='mb-3 w-100 bg-primary text-white shadow-lg text-center fw-bold '),
+             ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold '),
 
             html.Div([html.Label('25. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
@@ -466,7 +466,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-             ], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold '),
+             ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold '),
 
             html.Div([html.Label('26. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
@@ -482,7 +482,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-           ], className='mb-3 w-100 bg-info text-white shadow-lg text-center fw-bold'),
+           ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold'),
 
             html.Div([html.Label('27. Grupo de Palavras')],className='text-center mb-3'),
 
@@ -499,7 +499,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'}),
-             ], className='mb-3 w-100 bg-success text-white shadow-lg text-center fw-bold '),
+             ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold '),
 
             html.Div([html.Label('28. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
@@ -515,7 +515,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'})
-             ], className='mb-3 w-100 bg-warning text-white shadow-lg text-center fw-bold'),
+             ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold'),
 
             html.Div([html.Label('29. Grupo de Palavras')],className='text-center mb-3'),
         dbc.Card([
@@ -531,7 +531,7 @@ dbc.Container([
                 ],label_style={'margin-bottom': '10px'}, style={'display':'flex','flex-direction': 'column', 'align-items': 'start'}
             ),
             ], style={'display':'flex','justify-content': 'center'})
-             ], className='mb-3 w-100 bg-info text-white shadow-lg text-center fw-bold '),
+             ], className='mb-3 w-100 card-zoom  text-white shadow-lg text-center fw-bold '),
 
         ],sm=12, md=6, lg=4, xl=3)
     ], className='d-flex justify-content-center'),
