@@ -7,6 +7,7 @@ from dash import Input, Output, State
 from datetime import datetime
 import os
 import requests
+from collections import Counter
 
 client = pymongo.MongoClient('')
 db = client['avaliacaoaplicada']
@@ -19,31 +20,38 @@ if response.status_code == 200:
     data = response.json()
     municipio = [ i['nome'] for i in data]
 
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.QUARTZ])
+
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.QUARTZ], prevent_initial_callbacks=True)
+app.title = "Gestão de Pessoas - Project"
+local_favcon = 'img/logofav.svg'
+app._favicon = local_favcon
 
 app.layout = html.Div([
-    
+dbc.Row([
+        dbc.Nav(html.Img(src= 'assets/img/Logo-Project-2021-Branco.png', style={'max-height': '100px'}), className='navbar navbar-dark bg-primary shadow-lg d-flex justify-content-center align-items-center', style={'max-height': '100px'}),
+    ]), 
 dbc.Container([
+    
     dbc.Row([
         dbc.Card([
             html.Label('Nome'),
-            dbc.Input(id='input-nome', type='text'),
+            dbc.Input(id='input-nome', type='text' , className='text-black fw-bold'),
 
             html.Label('Cargo'),
-            dbc.Input(id='input-cargo', type='text'),
+            dbc.Input(id='input-cargo', type='text', className='text-black fw-bold'),
 
             html.Label('Cidade'),
             dcc.Dropdown(municipio, id='input-cidade', className='text-black' , placeholder='', style={'backgroundColor': 'rgba(255, 255, 255, 0)'}),
 
             html.Label('Instituição'),
-            dbc.Input(id='input-instituicao', type='text'),
+            dbc.Input(id='input-instituicao', type='text', className='text-black fw-bold'),
         ], className='pb-3 fw-bold'),
-    ]),
+    ], className='mt-3'),
 
     html.Hr(),
     
     dbc.Row([
-        html.H3('Escolha uma palavra em cada grupo de palavras, que melhor define você' , className='text-center mb-3'),
+        html.H3(['Escolha', html.Em(' uma palavra ' , className='text-warning') , 'em cada grupo de palavras', html.Em(' que melhor define você ' , className='text-danger') ], className='text-center mb-3'),
     ]),
 
     dbc.Row([
@@ -541,13 +549,25 @@ dbc.Container([
 
 html.Div(id='status'),
 
-html.Div([dbc.Button('Enviar', id='enviar', className='m-3', size='lg')], className='d-flex justify-content-center'),
-
+html.Div([dbc.Button('Enviar', id='enviar', className='m-3', size='lg'),
+          dbc.Button('Ver Resultado', id='ver-resultado', className='m-3 bg-warning', size='lg', disabled=True)], className='d-flex justify-content-center'),
+dbc.Modal(
+            [
+                dbc.ModalHeader(dbc.ModalTitle(id='modal-title')),
+                dbc.ModalBody(id = 'modal-body'),
+            ],
+            id="modal-resultado",
+            size="lg",
+            is_open=False,
+        ),
 ])
+
+
 
 
 @app.callback(
     Output('status', 'children'),
+    Output('ver-resultado', 'disabled'),
     [Input('enviar', 'n_clicks')],
     [State('input-nome', 'value'),
      State('input-cargo', 'value'),
@@ -623,9 +643,45 @@ def save_data(n_clicks, nome, cargo, cidade, instituicao, q1, q2,q3,q4,q5,q6,q7,
                 'q29': q29,
                 'data':current_date
             })
-            return dbc.Alert('Dados salvos com sucesso!', color="primary")
+            return dbc.Alert('Dados salvos com sucesso!', color="primary"), False
         except pymongo.errors.DuplicateKeyError:
-            return dbc.Alert('Usuário já respondeu o questionário!', color="danger")
+            return dbc.Alert('Usuário já respondeu o questionário!', color="danger"), True
     return ''
+
+@app.callback(
+    Output("modal-resultado", "is_open"),
+    Input('ver-resultado', 'n_clicks'),
+    State("modal-resultado", "is_open"),
+)
+def toggle_modal(n1, is_open):
+    if n1:
+        return not is_open
+    return is_open
+
+
+@app.callback(
+    Output('modal-title', 'children'),
+    Output('modal-body', 'children'),
+    Input('ver-resultado', 'n_clicks'),
+    State('input-nome', 'value'),
+    prevented_initial_call=True
+)
+def resultado(n1, nome):
+    documento = collection.find_one({'nome': nome})
+    if documento:
+        valores = []
+        for campo, valor in documento.items():
+            valores.append(valor)
+        contador = Counter(valores)
+        valor_mais_frequente = contador.most_common(1)[0][0]
+        valor_mais_frequente = str(valor_mais_frequente)
+        print('O valor mais frequente é:', valor_mais_frequente)
+    else:
+        print('Documento não encontrado.')
+    
+    return valor_mais_frequente , "teste"
+    
+    
+
 if __name__ == '__main__':
     app.run_server(debug=True)
