@@ -8,6 +8,7 @@ from datetime import datetime
 import os
 import requests
 from collections import Counter
+from perfis import *
 
 client = pymongo.MongoClient('')
 db = client['avaliacaoaplicada']
@@ -21,7 +22,9 @@ if response.status_code == 200:
     municipio = [ i['nome'] for i in data]
 
 
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.QUARTZ], prevent_initial_callbacks=True)
+
+
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.QUARTZ], prevent_initial_callbacks=True, meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}])
 app.title = "Gestão de Pessoas - Project"
 local_favcon = 'img/logofav.svg'
 app._favicon = local_favcon
@@ -557,7 +560,7 @@ dbc.Modal(
                 dbc.ModalBody(id = 'modal-body'),
             ],
             id="modal-resultado",
-            size="lg",
+            size="xl",
             is_open=False,
         ),
 ])
@@ -637,7 +640,8 @@ def save_data(n_clicks, nome, cargo, cidade, instituicao, q1, q2,q3,q4,q5,q6,q7,
                 'q22': q22,
                 'q23': q23,
                 'q24': q24,
-                'q25': q26,
+                'q25': q25,
+                'q26': q26,
                 'q27': q27,
                 'q28': q28,
                 'q29': q29,
@@ -675,11 +679,21 @@ def resultado(n1, nome):
         contador = Counter(valores)
         valor_mais_frequente = contador.most_common(1)[0][0]
         valor_mais_frequente = str(valor_mais_frequente)
-        print('O valor mais frequente é:', valor_mais_frequente)
+
+        if valor_mais_frequente == 'Estável':
+            return perfil(head_estavel,body_estavel)
+        
+        elif valor_mais_frequente == 'Ananlítico':
+            return perfil(head_analitico,boody_analitico)
+        
+        elif valor_mais_frequente == 'Influenciador':
+            return perfil(head_influenciador,body_influenciador)
+        
+        elif valor_mais_frequente == 'Dominador':
+            return perfil(head_dominador,body_dominador)
+ 
     else:
         print('Documento não encontrado.')
-    
-    return valor_mais_frequente , "teste"
     
     
 
